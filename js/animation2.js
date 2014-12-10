@@ -55,6 +55,8 @@ uniforms = {
   }
 };
 
+pointTexture = THREE.ImageUtils.loadTexture("img/point.png");
+
 shaderMaterial = new THREE.ShaderMaterial({
   uniforms: uniforms,
   attributes: attributes
@@ -62,7 +64,8 @@ shaderMaterial = new THREE.ShaderMaterial({
 
 particleMaterial = new THREE.PointCloudMaterial({
   size: 5,
-  color: 0x006869
+  color: 0x006869,
+  map: pointTexture
 });
 
 particles = new THREE.PointCloud(geometry, particleMaterial);
