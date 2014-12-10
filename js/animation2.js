@@ -63,8 +63,11 @@ shaderMaterial = new THREE.ShaderMaterial({
 });
 
 particleMaterial = new THREE.PointCloudMaterial({
-  size: 8,
-  map: pointTexture
+  size: 5,
+  color:0xffffff,
+  map: pointTexture,
+  blending: THREE.AdditiveBlending,
+  transparent: true
 });
 
 particles = new THREE.PointCloud(geometry, particleMaterial);
