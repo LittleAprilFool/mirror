@@ -101,7 +101,7 @@
   init = function() {
     var line, lineMaterial;
     renderer.setSize(window.innerWidth, window.innerHeight);
-    $("body").append(renderer.domElement);
+    $(".main").append(renderer.domElement);
     scene.add(particles);
     lineMaterial = new THREE.LineBasicMaterial({
       color: 0x006869,

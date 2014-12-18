@@ -3,48 +3,81 @@
 <head>
     <title>Mirror demo</title>
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <script src="js/jquery.min.js"></script>
 </head>
 <body>
-<script src="js/three.min.js"></script>
-<script type="x-shader/x-vertex" id="vertexshader">
+    <div class="container">
+        <div class="pusher">
+            <div class="info">
+                <p>
+                    测试测试测试测试
+                </p>
+                <p>
+                    测试测试测试测试
+                </p>
+                <p>
+                    测试测试测试测试
+                </p>
+                
+            </div>
 
-attribute float size;
-attribute vec3 customColor;
+            <div class="content">
+                <div class="head">
+                    <p>
+                        测试测试测试测试
+                    </p>
+                    <p>
+                        测试测试测试测试
+                    </p>
+                    <p>
+                        测试测试测试测试
+                    </p>
 
-varying vec3 vColor;
+                </div>
+                <div class="main">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/three.min.js"></script>
 
-void main() {
+    <script type="x-shader/x-vertex" id="vertexshader">
 
-    vColor = customColor;
+    attribute float size;
+    attribute vec3 customColor;
 
-    vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+    varying vec3 vColor;
 
-    gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
+    void main() {
 
-    gl_Position = projectionMatrix * mvPosition;
+        vColor = customColor;
 
-}
+        vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
 
-</script>
-<script type="x-shader/x-fragment" id="fragmentshader">
+        gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
 
-uniform vec3 color;
-uniform sampler2D texture;
+        gl_Position = projectionMatrix * mvPosition;
 
-varying vec3 vColor;
+    }
+    </script>
 
-void main() {
+    <script type="x-shader/x-fragment" id="fragmentshader">
+    uniform vec3 color;
+    uniform sampler2D texture;
 
-    gl_FragColor = vec4( color * vColor, 1.0 );
+    varying vec3 vColor;
 
-    gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+    void main() {
 
-    if ( gl_FragColor.a < ALPHATEST ) discard;
+        gl_FragColor = vec4( color * vColor, 1.0 );
 
-}
+        gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
 
-</script>
-<script src="js/animation2.js"></script>
+        if ( gl_FragColor.a < ALPHATEST ) discard;
+
+    }
+    </script>
+    <script src="js/animation2.js"></script>
 </body>
 </html>
